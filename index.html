@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,31 +11,36 @@
 
 <body>
     <div class="header">
-        <img src="logo.png" alt="Lister"/>
+        <img src="logo.png" alt="Lister" />
     </div>
     <div class="section charInputForm checkString">
         <h2>Remove unwanted whitespace</h2>
         <label>
-            <input type="text" placeholder="Enter a string" data-cy="checkInput"/>
+            <input type="text" placeholder="Enter a string" data-cy="checkInput" />
             <button class="btn btn-link" data-cy="clearInput" onclick="clearInput()">Clear</button>
         </label>
-        <button onclick="removeUnwantedSpace()" data-cy="removeWhitespace" class="btn btn-default">Remove Unwanted Whitespace</button>
-        <button onclick="removeAllSpace()" data-cy="removeAllWhitespace" class="btn btn-default">Remove All Whitespace</button>
+        <button onclick="removeUnwantedSpace()" data-cy="removeWhitespace" class="btn btn-default">Remove Unwanted
+            Whitespace</button>
+        <button onclick="removeAllSpace()" data-cy="removeAllWhitespace" class="btn btn-default">Remove All
+            Whitespace</button>
         <div class="result" data-cy="result"></div>
         <h4>Provided test cases</h4>
         <blockquote>
-            <p><mark>"&nbsp;&nbsp;Test&nbsp;&nbsp;&nbsp;&nbsp;hello&nbsp;&nbsp;&nbsp;&nbsp;world!&nbsp;&nbsp;"</mark> should become <mark>"Test hello world!"</mark> on clicking Remove Whitespace button</p>
-            <p><mark>"First&nbsp;&nbsp;name  "</mark> should become <mark>"Firstname"</mark> on clicking Remove All Whitespace button</p>
+            <p><mark>"&nbsp;&nbsp;Test&nbsp;&nbsp;&nbsp;&nbsp;hello&nbsp;&nbsp;&nbsp;&nbsp;world!&nbsp;&nbsp;"</mark>
+                should become <mark>"Test hello world!"</mark> on clicking Remove Whitespace button</p>
+            <p><mark>"First&nbsp;&nbsp;name "</mark> should become <mark>"Firstname"</mark> on clicking Remove All
+                Whitespace button</p>
         </blockquote>
     </div>
 
     <div class="section charInputForm checkString">
         <h2>Check the string is palindrome or not</h2>
         <label>
-            <input type="text" placeholder="Enter a string" data-cy="checkInputPalindrome"/>
+            <input type="text" placeholder="Enter a string" data-cy="checkInputPalindrome" />
             <button class="btn btn-link" data-cy="clearInputPalindrome" onclick="clearInputPalindrome()">Clear</button>
         </label>
-        <button data-cy="checkPalindrome" onclick="checkPalindrome()" class="btn btn-default">Check Palindrome or Not</button>
+        <button data-cy="checkPalindrome" onclick="checkPalindrome()" class="btn btn-default">Check Palindrome or
+            Not</button>
         <div class="result" data-cy="resultPalindrome"></div>
         <h4>Provided test cases</h4>
         <blockquote>
@@ -45,19 +51,19 @@
     </div>
     <script>
         let resultInput = document.querySelector("[data-cy='result']"),
-        resultPalindrome = document.querySelector("[data-cy='resultPalindrome']"),
-        emptyValueErr = 'The value should not be empty',
-        emptyValueSpaceErr = 'The entered value doesn\'t have any whitespace';
+            resultPalindrome = document.querySelector("[data-cy='resultPalindrome']"),
+            emptyValueErr = 'The value should not be empty',
+            emptyValueSpaceErr = 'The entered value doesn\'t have any whitespace';
 
-        removeUnwantedSpace = () => {   
+        removeUnwantedSpace = () => {
             let str = document.querySelector("[data-cy='checkInput']").value,
-            classlist = resultInput.classList;     
-            if(str === ''){
+                classlist = resultInput.classList;
+            if (str === '') {
                 resultInput.innerHTML = emptyValueErr;
                 classlist.remove('success');
                 classlist.add('error');
-            } else if(/\s/.test(str)){
-                resultInput.innerHTML = str.replace(/\s+/g,' ').trim();
+            } else if (/\s/.test(str)) {
+                resultInput.innerHTML = str.replace(/\s+/g, ' ').trim();
                 classlist.remove('error');
                 classlist.add('success');
             } else {
@@ -69,13 +75,13 @@
 
         removeAllSpace = () => {
             let str = document.querySelector("[data-cy='checkInput']").value,
-            classlist = resultInput.classList;
-            if(str === ''){
+                classlist = resultInput.classList;
+            if (str === '') {
                 resultInput.innerHTML = emptyValueErr;
                 classlist.remove('success');
                 classlist.add('error');
-            } else if(/\s/.test(str)){
-                resultInput.innerHTML = str.replace(/\s+/g,'').trim();
+            } else if (/\s/.test(str)) {
+                resultInput.innerHTML = str.replace(/\s+/g, '').trim();
                 classlist.remove('error');
                 classlist.add('success');
             } else {
@@ -97,22 +103,22 @@
 
         checkPalindrome = () => {
             let str = document.querySelector("[data-cy='checkInputPalindrome']").value,
-            classlist = resultPalindrome.classList;
-            if(str === ''){
+                classlist = resultPalindrome.classList;
+            if (str === '') {
                 resultPalindrome.innerHTML = emptyValueErr;
                 classlist.remove('success');
                 classlist.add('error');
             } else {
-                if(str === reverseString(str)){
-                    resultPalindrome.innerHTML = '"'+str +'" is a palindrome'
+                if (str === reverseString(str)) {
+                    resultPalindrome.innerHTML = '"' + str + '" is a palindrome'
                     classlist.remove('error');
                     classlist.add('success');
                 } else {
-                    resultPalindrome.innerHTML = '"'+str +'" is not a palindrome'
+                    resultPalindrome.innerHTML = '"' + str + '" is not a palindrome'
                     classlist.remove('success');
                     classlist.add('error');
                 }
-            }      
+            }
         }
 
         reverseString = (str) => {
@@ -120,4 +126,5 @@
         }
     </script>
 </body>
+
 </html>
