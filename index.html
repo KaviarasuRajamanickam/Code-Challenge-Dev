@@ -46,54 +46,71 @@
     <script>
         let resultInput = document.querySelector("[data-cy='result']"),
         resultPalindrome = document.querySelector("[data-cy='resultPalindrome']"),
-        emptyValueErr = 'The value should not be empty'
+        emptyValueErr = 'The value should not be empty',
+        emptyValueSpaceErr = 'The entered value doesn\'t have any whitespace';
 
         removeUnwantedSpace = () => {   
-            let inputValue = document.querySelector("[data-cy='checkInput']").value;       
-            if(inputValue === ''){
+            let str = document.querySelector("[data-cy='checkInput']").value,
+            classlist = resultInput.classList;     
+            if(str === ''){
                 resultInput.innerHTML = emptyValueErr;
-                resultInput.classList.add('error');
+                classlist.remove('success');
+                classlist.add('error');
+            } else if(/\s/.test(str)){
+                resultInput.innerHTML = str.replace(/\s+/g,' ').trim();
+                classlist.remove('error');
+                classlist.add('success');
             } else {
-                resultInput.innerHTML = inputValue.replace(/\s+/g,' ').trim();
-                resultInput.classList.add('success');
+                resultInput.innerHTML = emptyValueSpaceErr;
+                classlist.remove('success');
+                classlist.add('error');
             }
         }
 
         removeAllSpace = () => {
-            let inputValue = document.querySelector("[data-cy='checkInput']").value;
-            if(inputValue === ''){
+            let str = document.querySelector("[data-cy='checkInput']").value,
+            classlist = resultInput.classList;
+            if(str === ''){
                 resultInput.innerHTML = emptyValueErr;
-                resultInput.classList.add('error');
+                classlist.remove('success');
+                classlist.add('error');
+            } else if(/\s/.test(str)){
+                resultInput.innerHTML = str.replace(/\s+/g,'').trim();
+                classlist.remove('error');
+                classlist.add('success');
             } else {
-                resultInput.innerHTML = inputValue.replace(/\s+/g,'').trim();
-                resultInput.classList.add('success');
+                resultInput.innerHTML = emptyValueSpaceErr;
+                classlist.remove('success');
+                classlist.add('error');
             }
         }
 
         clearInput = () => {
             document.querySelector("[data-cy='checkInput']").value = '';
             resultInput.innerHTML = '';
-            resultInput.classList.remove('error','success');
         }
 
         clearInputPalindrome = () => {
             document.querySelector("[data-cy='checkInputPalindrome']").value = '';
             resultPalindrome.innerHTML = '';
-            resultInput.classList.remove('error','success');
         }
 
         checkPalindrome = () => {
-            let inputValue = document.querySelector("[data-cy='checkInputPalindrome']").value;
-            if(inputValue === ''){
+            let str = document.querySelector("[data-cy='checkInputPalindrome']").value,
+            classlist = resultPalindrome.classList;
+            if(str === ''){
                 resultPalindrome.innerHTML = emptyValueErr;
-                resultPalindrome.classList.add('error');
+                classlist.remove('success');
+                classlist.add('error');
             } else {
-                if(inputValue === reverseString(inputValue)){
-                    resultPalindrome.innerHTML = '"'+inputValue +'" is a palindrome'
-                    resultPalindrome.classList.add('success');
+                if(str === reverseString(str)){
+                    resultPalindrome.innerHTML = '"'+str +'" is a palindrome'
+                    classlist.remove('error');
+                    classlist.add('success');
                 } else {
-                    resultPalindrome.innerHTML = '"'+inputValue +'" is not a palindrome'
-                    resultPalindrome.classList.add('error');
+                    resultPalindrome.innerHTML = '"'+str +'" is not a palindrome'
+                    classlist.remove('success');
+                    classlist.add('error');
                 }
             }      
         }
