@@ -1,0 +1,19 @@
+{
+  "name": "code-challenge-dev",
+  "version": "1.0.0",
+  "description": "Developed UI to remove the unwanted whitespace from a string and check the given string is palindrome or not",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaviarasuRajamanickam/Code-Challenge-Dev.git"
+  },
+  "author": "Lister",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaviarasuRajamanickam/Code-Challenge-Dev/issues"
+  },
+  "homepage": "https://github.com/KaviarasuRajamanickam/Code-Challenge-Dev#readme"
+}
