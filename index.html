@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Code Challenge</title>
+    <title>Javascript Code Challenge</title>
     <link href="style.css" rel="stylesheet">
 </head>
 
@@ -46,12 +46,12 @@
     <script>
         let resultInput = document.querySelector("[data-cy='result']"),
         resultPalindrome = document.querySelector("[data-cy='resultPalindrome']"),
-        emptyValue = 'The value should not be empty'
+        emptyValueErr = 'The value should not be empty'
 
         removeUnwantedSpace = () => {   
             let inputValue = document.querySelector("[data-cy='checkInput']").value;       
             if(inputValue === ''){
-                resultInput.innerHTML = emptyValue;
+                resultInput.innerHTML = emptyValueErr;
                 resultInput.classList.add('error');
             } else {
                 resultInput.innerHTML = inputValue.replace(/\s+/g,' ').trim();
@@ -62,7 +62,7 @@
         removeAllSpace = () => {
             let inputValue = document.querySelector("[data-cy='checkInput']").value;
             if(inputValue === ''){
-                resultInput.innerHTML = emptyValue;
+                resultInput.innerHTML = emptyValueErr;
                 resultInput.classList.add('error');
             } else {
                 resultInput.innerHTML = inputValue.replace(/\s+/g,'').trim();
@@ -73,21 +73,19 @@
         clearInput = () => {
             document.querySelector("[data-cy='checkInput']").value = '';
             resultInput.innerHTML = '';
-            resultInput.classList.remove('error');
-            resultInput.classList.remove('success');
+            resultInput.classList.remove('error','success');
         }
 
         clearInputPalindrome = () => {
             document.querySelector("[data-cy='checkInputPalindrome']").value = '';
             resultPalindrome.innerHTML = '';
-            resultPalindrome.classList.remove('error');
-            resultPalindrome.classList.remove('success');
+            resultInput.classList.remove('error','success');
         }
 
         checkPalindrome = () => {
             let inputValue = document.querySelector("[data-cy='checkInputPalindrome']").value;
             if(inputValue === ''){
-                resultPalindrome.innerHTML = emptyValue;
+                resultPalindrome.innerHTML = emptyValueErr;
                 resultPalindrome.classList.add('error');
             } else {
                 if(inputValue === reverseString(inputValue)){
